@@ -20,6 +20,23 @@ test.describe('Demo @Smoke', () => {
   });  
 });
 
+
+const dataset: string[] = ['Playwright', 'TypeScript', 'JavaScript'];
+
+dataset.forEach((data: string) => {
+  test(`Validate Wiki search for ${data}`, async({ page }) => {
+
+    await page.goto('https://www.wikipedia.org/');
+  
+    await page.locator('#searchInput').fill(data);
+    await page.locator('.pure-button-primary-progressive').click();
+  
+    expect(page.url()).toContain(data);
+    expect(await page.title()).toContain(data);
+    expect(await page.locator('#firstHeading').innerText()).toBe(data);
+  });
+});
+
 /*
 Go to https://www.wikipedia.org/
 Search for "Playwright"
