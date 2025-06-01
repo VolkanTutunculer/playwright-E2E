@@ -1,0 +1,27 @@
+//button[@id='register_button']
+
+1. find all buttons
+2. filter the buttons which has id attribute
+3. filter the id equals register_button
+
+
+button[id='register_button']
+
+1. find the id which is register_button
+
+
+//tagName[@attribute="value"]
+
+tagName[attribute="value"]
+
+
+tagName[attribute^="value"] 			//button[starts-with(@id, 'register')]
+tagName[attribute*="value"] 			//button[contains(@id, 'register')]
+tagName[attribute$="value"] 			//button[ends-with(@id, 'button')]
+										//button[text()='Register']
+
+
+Playwright support XPath
+Cypress does not support XPath (but there is a dependency)
+Selenium supports XPath
+They all support CSS and have their own locators
