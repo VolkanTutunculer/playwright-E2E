@@ -24,7 +24,7 @@ test.describe('Demo @Smoke', () => {
 const dataset: string[] = ['Playwright', 'TypeScript', 'JavaScript'];
 
 dataset.forEach((data: string) => {
-  test(`Validate Wiki search for ${data}`, async({ page }) => {
+  test(`Validate Wiki search for ${data} @Regression`, async({ page }) => {
 
     await page.goto('https://www.wikipedia.org/');
   

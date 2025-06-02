@@ -2,8 +2,13 @@
   "name": "playwright-e2e-b11",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "npx playwright test"
+    "test": "npx playwright test",
+    "test:uimode": "npx playwright test --ui",
+    "test:traceon": "npx playwright test --trace on",
+    "test-smoke": "npx playwright test --grep @Smoke",
+    "test-regression": "npx playwright test --grep @Regression"
   },
   "keywords": [],
   "author": "",

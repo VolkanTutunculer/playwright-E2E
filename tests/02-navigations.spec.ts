@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Playwright Navigations', () => {
+test.describe('Playwright Navigations @Regression', () => {
   test('Url and title validation', async({ page }) => {
     await page.goto('https://www.google.com/');
 
@@ -27,9 +27,3 @@ test.describe('Playwright Navigations', () => {
     await page.goForward();
   });
 });
-
-const arr = [1,2,3];
-
-arr.length = 0;
-
-console.log(arr);

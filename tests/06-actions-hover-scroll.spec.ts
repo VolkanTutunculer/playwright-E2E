@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Playwright Actions', () => {
+test.describe('Playwright Actions @Regression', () => {
   test.beforeEach( async({ page }) => {
     await page.goto('https://www.techglobal-training.com');
   });

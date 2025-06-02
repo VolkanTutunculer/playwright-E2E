@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Playwright Multiple Elements", () => {
+test.describe("Playwright Multiple Elements @Regression", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.techglobal-training.com");
   });
@@ -38,6 +38,14 @@ test.describe("Playwright Multiple Elements", () => {
     Each has target attribute equals "_blank"
   */
   test("Validate Footer Social Icons", async ({ page }) => {
+      const socialLinkElements = page.locator('[class^="Footer_socials"]>a');
+      const count = await socialLinkElements.count();
 
+      expect(count).toBe(5);
+
+      for(let i = 0; i < count; i++) {
+        expect(await socialLinkElements.nth(i).getAttribute('href')).toContain('techglobal');
+        expect(await socialLinkElements.nth(i).getAttribute('target')).toBe('_blank');
+      }
   });
 });

@@ -1,6 +1,6 @@
 import { chromium, test } from "@playwright/test";
 
-test('Setting a page', async() => {
+test('Setting a page @Regression', async() => {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
@@ -12,6 +12,6 @@ test('Setting a page', async() => {
 });
 
 
-test('Visiting a page', async({ page }) => {
+test('Visiting a page @Regression', async({ page }) => {
   await page.goto('https://www.techglobal-training.com/');
 });
