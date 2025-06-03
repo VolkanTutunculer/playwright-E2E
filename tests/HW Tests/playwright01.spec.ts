@@ -1,5 +1,4 @@
 import { test, expect } from "@playwright/test";
-import { on } from "events";
 
 test.describe("Playwright01", () => {
   test.beforeEach(async ({ page }) => {
