@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test("Playwright element states", async ({ page }) => {
+test("Playwright element states @Regression", async ({ page }) => {
   await page.goto("https://www.techglobal-training.com/frontend/html-elements");
   const registerButton = page.locator("#register_button");
 
@@ -19,15 +19,15 @@ test("Playwright element states", async ({ page }) => {
   // console.log(registerButton.isHidden());
 });
 
-test("Example", async ({ page }) => {
+test("Example @Regression", async ({ page }) => {
   await page.goto("https://www.bestbuy.ca/en-ca");
 
-  await page.waitForSelector('#onetrust-banner-sdk');
+  await page.waitForSelector("#onetrust-banner-sdk");
   const isModalVisible = await page.locator("#onetrust-banner-sdk").isVisible();
-  console.log(isModalVisible)
+  console.log(isModalVisible);
 
   if (isModalVisible) {
-    await page.locator('#onetrust-close-btn-container').click();
+    await page.locator("#onetrust-close-btn-container").click();
   }
   //await page.pause();
 });
