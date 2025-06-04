@@ -47,4 +47,4 @@ test.describe('Multiple Tabs Handling @Regression', () => {
     await page3.close();
     await page2.close();
   });
-})
+});
