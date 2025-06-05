@@ -41,7 +41,7 @@ test('Snapshot Test 3', async({ page }) => {
     `);
 });
 
-test('Snapshot Test 4', async ({ page }) => {
+test('Snapshot Test 4', async({ page }) => {
   await page.goto('https://www.techglobal-training.com/');
   await expect(page.locator('#root')).toMatchAriaSnapshot(`
     - img "who we are"
