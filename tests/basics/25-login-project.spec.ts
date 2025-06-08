@@ -1,4 +1,4 @@
-import { test, expect } from './../fixtures/PageFixture';
+import { test, expect } from '../../fixtures/PageFixture';
 
 test('Validate page loads', async({ frontendTestingPage }) => {
   await frontendTestingPage.clickOnProjectCard('Login Function');

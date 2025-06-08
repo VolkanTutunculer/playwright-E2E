@@ -1,4 +1,4 @@
-import { test as base, expect } from '@playwright/test';
+import { test as base, expect, Page } from '@playwright/test';
 import { BasePage } from '../pages/BasePage';
 import { FrontendTestingPage } from '../pages/FrontendTestingPage';
 import { BackendTestingPage } from '../pages/BackendTestingPage';
@@ -11,7 +11,8 @@ type PageFixture = {
   basePage: BasePage,
   frontendTestingPage: FrontendTestingPage,
   backendTestingPage: BackendTestingPage,
-  mockInterviewsLoginPage: MockInterviewsLoginPage
+  mockInterviewsLoginPage: MockInterviewsLoginPage,
+  loginPage: Page
 }
 
 export const test = base.extend<PageFixture>({

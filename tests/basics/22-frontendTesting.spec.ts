@@ -1,6 +1,6 @@
 import { test as it, expect } from '@playwright/test';
-import { BasePage } from '../pages/BasePage';
-import { FrontendTestingPage } from '../pages/FrontendTestingPage';
+import { BasePage } from '../../pages/BasePage';
+import { FrontendTestingPage } from '../../pages/FrontendTestingPage';
 
 it.describe('Frontend Testing Page verification', () =>{
   let basePage: BasePage;

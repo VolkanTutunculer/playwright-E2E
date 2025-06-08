@@ -31,6 +31,7 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
+    //storageState: '',
     headless: false,
     /* Base URL to use in actions like `await page.goto('/')`. */
     //baseURL: process.env.baseURL, // "https://www.techglobal-training.com"
@@ -42,9 +43,45 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'Basics',
+      testDir: './tests/basics',
+      use: { 
+        ...devices['Desktop Chrome'],
+        // baseURL: "https://www.techglobal-training.com",
+        headless: true
+      },
     },
+    {
+      name: 'Demo Blaze Chrome',
+      testDir: './tests/demo-blaze',
+      dependencies: ['Demo Blaze Set up'],
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: "https://demoblaze.com/index.html#",
+        headless: false,
+        storageState: './tests/auth/demo-blaze.json'
+      },
+    },
+    {
+      name: 'Demo Blaze Safari',
+      testDir: './tests/demo-blaze',
+      dependencies: ['Demo Blaze Set up'],
+      use: { 
+        ...devices['Desktop Safari'],
+        baseURL: "https://demoblaze.com/index.html#",
+        headless: false,
+        storageState: './tests/auth/demo-blaze.json'
+      },
+    },
+    {
+      name: 'Demo Blaze Set up',
+      testDir: './tests/demo-blaze-setup',
+      use: { 
+        ...devices['Desktop Chrome'],
+        baseURL: "https://demoblaze.com/index.html#",
+        headless: false
+      },
+    }
 
     // {
     //   name: 'firefox',

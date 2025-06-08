@@ -1,4 +1,4 @@
-import { test, expect } from './../fixtures/PageFixture';
+import { test, expect } from '../../fixtures/PageFixture';
 
 test('Validate Home Page main heading', async({ basePage }) => {
   expect(await basePage.mainHeading.innerText()).toBe('Welcome to TechGlobal')
