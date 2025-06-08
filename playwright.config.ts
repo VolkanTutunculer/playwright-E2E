@@ -12,6 +12,8 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  // globalSetup: './tests/global-setup/global-setup.ts',
+  // globalTeardown: './tests/global-setup/global-teardown.ts',
   testDir: './tests',
   timeout: 30 * 1000,
   /* Run tests in files in parallel */
@@ -48,7 +50,7 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         // baseURL: "https://www.techglobal-training.com",
-        headless: true
+        headless: false
       },
     },
     {
