@@ -1,5 +1,12 @@
 import { test, expect } from "@playwright/test";
 
+// test.use({
+//   storageState: '',
+//   navigationTimeout: 1,
+//   actionTimeout: 2,
+//   headless: false
+// });
+
 test.describe("Playwright Multiple Elements @Regression", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.techglobal-training.com");
@@ -14,6 +21,7 @@ test.describe("Playwright Multiple Elements @Regression", () => {
   */
 
   test("Validate Headers", async ({ page }) => {
+    
     const headerElements = page.locator('[class^="Header_menus"]>div');
 
     expect(await headerElements.count()).toBe(3);

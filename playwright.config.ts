@@ -15,7 +15,10 @@ export default defineConfig({
   // globalSetup: './tests/global-setup/global-setup.ts',
   // globalTeardown: './tests/global-setup/global-teardown.ts',
   testDir: './tests',
-  timeout: 30 * 1000,
+  timeout: 60 * 1000,
+  expect: {
+    timeout: 10000
+  },
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -40,6 +43,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    navigationTimeout: 30000
   },
 
   /* Configure projects for major browsers */
@@ -50,7 +54,8 @@ export default defineConfig({
       use: { 
         ...devices['Desktop Chrome'],
         // baseURL: "https://www.techglobal-training.com",
-        headless: false
+        headless: false,
+        actionTimeout: 20000
       },
     },
     {
