@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { on } from "events";
 
-test.describe("Playwright02 HW", () => {
+test.describe("Playwright 02 HomeWork", () => {
     test.beforeEach(async ({ page }) => {
         await page.goto(
             "https://www.techglobal-training.com/frontend/shopping-cart"
@@ -113,9 +112,9 @@ test.describe("Playwright02 HW", () => {
             const discountLocator = page.locator("span[data-testid='discount']").nth(i);
             const discountPercText = (await discountLocator.count()) > 0 ? await discountLocator.textContent() : null;
             let discount = 0;
-            if (discountPercText)
-                discount = Number(discountPercText.replace("%", "").replace("Discount", "").trim());
-
+            if (discountPercText) {
+                discount = Number(discountPercText.replace("%", "").replace("Discount", "").trim()) || 0;
+            }
             courseData.push({ courseName, imageSrc, priceNum, discount });
         }
 
@@ -163,10 +162,10 @@ test.describe("Playwright02 HW", () => {
             const discountLocator = page.locator("span[data-testid='discount']").nth(i);
             const discountPercText = (await discountLocator.count()) > 0 ? await discountLocator.textContent() : null;
             let discount = 0;
-            if (discountPercText){
+            if (discountPercText) {
                 discount = Number(discountPercText.replace("%", "").replace("Discount", "").trim()) || 0;
             };
-           
+
             courseData.push({ courseName, imageSrc, priceNum, discount });
         }
 
