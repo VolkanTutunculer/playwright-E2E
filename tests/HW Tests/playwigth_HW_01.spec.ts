@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-test.describe("Playwright01", () => {
+test.describe("Playwright 01 HomeWork", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("https://www.techglobal-training.com/frontend/todo-list");
   });
