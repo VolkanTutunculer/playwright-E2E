@@ -88,7 +88,17 @@ export default defineConfig({
         baseURL: "https://demoblaze.com/index.html#",
         headless: false
       },
+    },
+
+        {
+      name: 'HW',
+      testDir: './tests/HW Tests',
+      use: { 
+        ...devices['Desktop Chrome'],
+        headless: false
+      },
     }
+
 
     // {
     //   name: 'firefox',
