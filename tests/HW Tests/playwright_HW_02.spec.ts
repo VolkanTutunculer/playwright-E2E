@@ -96,16 +96,23 @@ test.describe("Playwright 02 HomeWork", () => {
         await expect(page.locator("#total-price")).toHaveText("Total: $0");
     });
 
+    type CourseData = {
+        courseName: string;
+        imageSrc: string;
+        priceNum: number;
+        discount: number;
+    };
+
     test("Test Case 04 - Add Two Courses to the Cart and Validate", async ({ page }) => {
         const coursesCount = 2;
-        const courseData = [];
+        const courseData: CourseData[] = [];
 
         for (let i = 0; i < coursesCount; i++) {
             await page.locator("button[class*=is-primary]").nth(i).click();
 
-            const courseName = await page.locator("div>h3").nth(i).textContent();
+            const courseName = await page.locator("div>h3").nth(i).textContent() ?? "";
             const image = page.locator("div>img").nth(i);
-            const imageSrc = await image.getAttribute("src");
+            const imageSrc = await image.getAttribute("src") ?? "";
             const priceInfoTxt = await page.locator("p[data-testid*='full-price'] > strong").nth(i).textContent();
             const priceNum = Number(priceInfoTxt?.replace("$", ""));
 
@@ -148,14 +155,14 @@ test.describe("Playwright 02 HomeWork", () => {
 
     test("Test Case 05 - Add All Three Courses to the Cart and Validate", async ({ page }) => {
         const coursesCount = 3;
-        const courseData = [];
+        const courseData: CourseData[] = [];
 
         for (let i = 0; i < coursesCount; i++) {
             await page.locator("button[class*=is-primary]").nth(i).click();
 
-            const courseName = await page.locator("div>h3").nth(i).textContent();
+            const courseName = await page.locator("div>h3").nth(i).textContent() ?? "";
             const image = page.locator("div>img").nth(i);
-            const imageSrc = await image.getAttribute("src");
+            const imageSrc = await image.getAttribute("src") ?? "";
             const priceInfoTxt = await page.locator("p[data-testid*='full-price'] > strong").nth(i).textContent();
             const priceNum = Number(priceInfoTxt?.replace("$", ""));
 
@@ -190,7 +197,6 @@ test.describe("Playwright 02 HomeWork", () => {
         const expectedTotal = courseData.reduce((sum, c) => sum + c.priceNum * (1 - c.discount / 100), 0);
         expect(totalPriceNum).toBe(expectedTotal);
 
-        await page.waitForTimeout(5000)
         await page.locator("button", { hasText: "Place Order" }).click();
 
         await expect(page.locator("div[class*='success']")).toHaveText("Your order has been placed.");
