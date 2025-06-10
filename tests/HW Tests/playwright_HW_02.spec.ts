@@ -124,5 +124,7 @@ test.describe("Playwright02 HW", () => {
 
     const calculatedPriceWDiscount = priceInfoNUm * (1 - discount / 100);
     expect(calculatedPriceWDiscount).toBe(cardPrice)
+
+    await page.locator("button", { hasText: "Place Order" }).click()
   });
 });
