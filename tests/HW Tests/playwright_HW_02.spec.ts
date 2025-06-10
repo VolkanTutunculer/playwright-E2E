@@ -11,7 +11,9 @@ test.describe("Playwright02 HW", () => {
   test("Test Case 01 - Available Courses Section Validation", async ({
     page,
   }) => {
-    await expect(page.locator("h1[class*='mt-']")).toHaveText("Available Courses");
+    await expect(page.locator("h1[class*='mt-']")).toHaveText(
+      "Available Courses"
+    );
 
     await expect(page.locator("div[class*='Project8_course']")).toHaveCount(3);
 
@@ -66,22 +68,61 @@ test.describe("Playwright02 HW", () => {
   });
 
   test("Test Case 02 - Cart Section Validation", async ({ page }) => {
-        await expect(page.locator("p[class=mb-2]")).toHaveText("Items Added to Cart");
+    await expect(page.locator("p[class=mb-2]")).toHaveText(
+      "Items Added to Cart"
+    );
 
-        await expect(page.locator('#total-price')).toHaveText('Total: $0');
+    await expect(page.locator("#total-price")).toHaveText("Total: $0");
 
-        await expect(page.locator('button[class*=is-flex]')).toHaveText('Place Order');
-        await expect(page.locator('button[class*=is-flex]')).toBeDisabled();
-
+    await expect(page.locator("button[class*=is-flex]")).toHaveText(
+      "Place Order"
+    );
+    await expect(page.locator("button[class*=is-flex]")).toBeDisabled();
   });
 
-    test("Test Case 03 - Add a Course to the Cart and Validate", async ({ page }) => {
-        await page.locator("button[class*=is-primary]").first().click();
+  test("Test Case 03 - Add a Course to the Cart and Validate", async ({
+    page,
+  }) => {
+    await page.locator("button[class*=is-primary]").first().click();
 
-        const courseName = await page.locator("div>h3").textContent();
-        const image = page.locator("div>img[alt='Course 1']").first();
+    const courseName = await page.locator("div>h3").first().textContent();
+    const image = page.locator("div>img[alt='Course 1']").first();
+    const imageSrc = await image.getAttribute("src");
+    const priceInfoTxt = await page
+      .locator("p[data-testid*='full-price'] > strong")
+      .first()
+      .textContent();
+    const priceInfoNUm = Number(priceInfoTxt?.replace("$", ""));
 
-        await page.locator("div[class*='course-card'][class*='Project8_']").
+    const discountLocator = page.locator("span[data-testid='discount']");
+    const discountPercText =
+      (await discountLocator.count()) > 0
+        ? await discountLocator.first().textContent()
+        : null;
 
+    let discount = 0;
+    if (discountPercText) {
+      discount = Number(
+        discountPercText.replace("%", "").replace("Discount", "").trim()
+      );
+    }
+
+    await expect(
+      page.locator("div[class*='course-card'][class*='Project8_']")
+    ).toBeVisible();
+    await expect(page.locator("p[class*='has-text-black']")).toHaveText(
+      `${courseName}`
+    );
+    await expect(
+      page.locator("div[class*='course-card'][class*='Project8_'] > img")
+    ).toHaveAttribute("src", `${imageSrc}`);
+
+    const cardPriceTxt = await page
+      .locator("span[data-testid='final-price']")
+      .textContent();
+    const cardPrice = Number(cardPriceTxt?.replace("$", ""));
+
+    const calculatedPriceWDiscount = priceInfoNUm * (1 - discount / 100);
+    expect(calculatedPriceWDiscount).toBe(cardPrice)
   });
 });
