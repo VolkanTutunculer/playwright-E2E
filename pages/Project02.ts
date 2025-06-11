@@ -95,7 +95,7 @@ export class CoursesPage {
         return { courseName, imageSrc, price, discount };
     }
 
-    async validateCartCourses(expectedCourses: any[]) {
+    async validateAddedCourses(expectedCourses: any[]) {
         const cards = this.page.locator("div[class*='course-card'][class*='Project8_']");
         await expect(cards).toHaveCount(expectedCourses.length);
 
@@ -119,7 +119,7 @@ export class CoursesPage {
         expect(total).toBe(expectedTotal);
     }
 
-    async placeOrderAndValidate() {
+    async placeOrder() {
         await this.placeOrderButton.click();
         await expect(this.successMessage).toHaveText("Your order has been placed.");
         await expect(this.totalPrice).toHaveText("Total: $0");

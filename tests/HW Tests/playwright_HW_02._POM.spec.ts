@@ -26,8 +26,8 @@ test.describe("Playwright 02 HomeWork", () => {
 
             await cart.addCourseToCart(0);
             const course = await cart.getCourseData(0);
-            await cart.validateCartCourses([course]);
-            await cart.placeOrderAndValidate();
+            await cart.validateAddedCourses([course]);
+            await cart.placeOrder();
         });
 
         test("Test Case 04 - Add Two Courses", async ({ page }) => {
@@ -41,8 +41,8 @@ test.describe("Playwright 02 HomeWork", () => {
                 data.push(await cart.getCourseData(i));
             }
 
-            await cart.validateCartCourses(data);
-            await cart.placeOrderAndValidate();
+            await cart.validateAddedCourses(data);
+            await cart.placeOrder();
         });
 
         test("Test Case 05 - Add All Courses", async ({ page }) => {
@@ -56,8 +56,8 @@ test.describe("Playwright 02 HomeWork", () => {
                 data.push(await cart.getCourseData(i));
             }
 
-            await cart.validateCartCourses(data);
-            await cart.placeOrderAndValidate();
+            await cart.validateAddedCourses(data);
+            await cart.placeOrder();
         });
     });
 });
