@@ -14,8 +14,13 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@faker-js/faker": "^9.8.0",
     "@playwright/test": "^1.52.0",
     "@types/node": "^22.15.23",
+    "@types/oracledb": "^6.6.1",
     "dotenv": "^16.5.0"
+  },
+  "dependencies": {
+    "oracledb": "^6.8.0"
   }
 }

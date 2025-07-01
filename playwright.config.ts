@@ -31,7 +31,7 @@ export default defineConfig({
   reporter: [
     ['list'],
     //['json', {  outputFile: 'playwright-report/test-results.json' }],
-    ['junit', { outputFile: 'junitReports/reports.xml'}],
+    ['junit', { outputFile: 'junitReports/reports.xml' }],
     ['html', { open: 'never' }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -51,7 +51,7 @@ export default defineConfig({
     {
       name: 'Basics',
       testDir: './tests/basics',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         // baseURL: "https://www.techglobal-training.com",
         headless: false,
@@ -62,7 +62,7 @@ export default defineConfig({
       name: 'Demo Blaze Chrome',
       testDir: './tests/demo-blaze',
       dependencies: ['Demo Blaze Set up'],
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         baseURL: "https://demoblaze.com/index.html#",
         headless: false,
@@ -73,7 +73,7 @@ export default defineConfig({
       name: 'Demo Blaze Safari',
       testDir: './tests/demo-blaze',
       dependencies: ['Demo Blaze Set up'],
-      use: { 
+      use: {
         ...devices['Desktop Safari'],
         baseURL: "https://demoblaze.com/index.html#",
         headless: false,
@@ -83,17 +83,24 @@ export default defineConfig({
     {
       name: 'Demo Blaze Set up',
       testDir: './tests/demo-blaze-setup',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         baseURL: "https://demoblaze.com/index.html#",
         headless: false
       },
     },
+          {
+      name: 'DB Automation',
+      testDir: './tests/db-automation',
+      use: {
+        ...devices['Desktop Chrome']
+      },
+    },
 
-        {
+    {
       name: 'HW',
       testDir: './tests/HW Tests',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         headless: false
       },
